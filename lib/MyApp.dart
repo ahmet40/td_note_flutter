@@ -1,13 +1,12 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projet1/page/ChoisirNiveaux.dart';
 import 'package:projet1/page/PageAccueil.dart';
 import 'package:projet1/page/PageReglement.dart';
-import 'package:projet1/page/PageHistorique.dart';
+
+
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +19,21 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
+  const MyHomePage({Key? key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>{
-  int numeroNavBarSelection=0;
+class _MyHomePageState extends State<MyHomePage> {
+  int numeroNavBarSelection = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
   void _onItemTapped(int index) {
     setState(() {
       numeroNavBarSelection = index;
@@ -37,22 +42,22 @@ class _MyHomePageState extends State<MyHomePage>{
 
   @override
   Widget build(BuildContext context) {
-    Widget page_selectionner;
+    Widget pageSelectionnee;
     switch (numeroNavBarSelection) {
       case 0:
-        page_selectionner = PageAccueil();
+        pageSelectionnee = PageAccueil();
         break;
       case 1:
-        page_selectionner = PageReglement();
+        pageSelectionnee = PageReglement();
         break;
       case 2:
-        page_selectionner = PageHistoique();
+        pageSelectionnee = ChoisirNiveaux(nomJoueur: "" ,nomPage: "PageHistorique");
         break;
       default:
-        page_selectionner = PageAccueil();
+        pageSelectionnee = PageAccueil();
     }
     return Scaffold(
-      body: page_selectionner,
+      body: pageSelectionnee,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -75,4 +80,3 @@ class _MyHomePageState extends State<MyHomePage>{
     );
   }
 }
-

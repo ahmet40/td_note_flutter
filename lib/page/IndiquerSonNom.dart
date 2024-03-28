@@ -10,6 +10,9 @@ class IndiquerSonNom extends StatelessWidget {
     TextEditingController nomController = TextEditingController(); // Contrôleur pour récupérer le nom entré
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Indiquer son nom'),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +36,7 @@ class IndiquerSonNom extends StatelessWidget {
                 if (nomJoueur.isNotEmpty) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ChoisirNiveaux(nomJoueur: nomJoueur)),
+                    MaterialPageRoute(builder: (context) => ChoisirNiveaux(nomJoueur: nomJoueur, nomPage: 'PageJeu')),
                   );
                 } else {
                   // Afficher un message d'erreur si le champ est vide
